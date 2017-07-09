@@ -1,0 +1,33 @@
+{
+  "name": "reactreduxsvg",
+  "version": "0.0.1",
+  "description": "React Redux SVG demo",
+  "main": "./src/js/index.js",
+  "scripts": {
+    "dev": "webpack --progress --colors --watch",
+    "release": "webpack --progress --colors --watch"
+  },
+  "author": "Tom W Hall",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "webpack": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^15.0.22",
+    "@types/react-dom": "^15.5.0",
+    "@types/react-redux": "^4.4.40",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "escompress-webpack-plugin": "^0.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "redux-devtools": "^3.4.0",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.1",
+    "webpack-merge": "^4.1.0"
+  }
+}

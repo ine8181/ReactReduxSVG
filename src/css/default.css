@@ -1,0 +1,14 @@
+body {
+  background: #000;
+  color: yellow;
+}
+
+#world {
+  position: absolute;  
+  background: yellow;
+}
+
+.bricks {
+  position: absolute;
+  fill: url(#bricks);
+}
