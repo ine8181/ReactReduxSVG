@@ -12,17 +12,7 @@ const initialState = {
 function getPlayerState(playerState = initialState, action, screenState, deltaTime) {
     switch (action.type) {
         case 'TICK':
-            const stateFromTick = getPlayerStateFromTick(playerState, screenState, deltaTime);
-            const position = stateFromTick.position;
-            if (position[0] > 1023) {
-                position[0] -= 1024;
-                stateFromTick.screen[0]++;
-            }
-            else if (position[0] < -63) {
-                position[0] += 1024;
-                stateFromTick.screen[0]--;
-            }
-            return stateFromTick;
+            return getPlayerStateFromTick(playerState, screenState, deltaTime);
         case 'MOVE':
             return getPlayerStateFromMove(playerState, action.direction);
         case 'JUMP':
@@ -76,7 +66,25 @@ function getPlayerStateFromTick(playerState, screenState, deltaTime) {
         forceY = physics_1.default.dampForce(forceY, deltaTime);
     }
     const newForce = [forceX, forceY];
-    return Object.assign({}, playerState, { force: newForce, position: newPosition });
+    // Check if player has moved to a new screen
+    const newScreen = [playerState.screen[0], playerState.screen[1]];
+    if (newPosition[0] > 1023) {
+        newPosition[0] -= 1024;
+        newScreen[0]++;
+    }
+    else if (newPosition[0] < -63) {
+        newPosition[0] += 1024;
+        newScreen[0]--;
+    }
+    else if (newPosition[1] > 127) {
+        newPosition[1] -= 768;
+        newScreen[1]--;
+    }
+    else if (newPosition[1] < -639) {
+        newPosition[1] += 768;
+        newScreen[0]++;
+    }
+    return Object.assign({}, playerState, { force: newForce, position: newPosition, screen: newScreen });
 }
 function getPlayerStateFromMove(playerState, direction) {
     const displayDirection = direction || playerState.displayDirection;
